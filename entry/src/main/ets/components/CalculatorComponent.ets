@@ -41,7 +41,7 @@ export struct CalculatorComponent {
   }
 
   updateFromNumber(newNum: string) {
-    console.log(this.fromNumber);
+    console.info(this.fromNumber);
     if (newNum === '.' && this.fromNumber === '0') {
       this.fromNumber = '0.';
     } else if (newNum === 'C') {
@@ -55,7 +55,7 @@ export struct CalculatorComponent {
     } else {
       this.fromNumber += newNum;
       this.toNumber = this.convertUnit(Number(this.fromNumber)).toString();
-      console.log(this.toNumber);
+      console.info(this.toNumber);
     }
   }
 
