@@ -82,7 +82,7 @@ export struct CalculatorComponent {
                 this.toUnit = converters.find((e) => e.category === newCat)?.units[1];
                 this.toNumber = this.convertUnit(Number(this.fromNumber)).toString();
               }
-            },
+            }
           })
         },
         onFromUnitClicked: () => {
@@ -99,7 +99,7 @@ export struct CalculatorComponent {
               }
               this.fromUnit = newUnit;
               this.toNumber = this.convertUnit(Number(this.fromNumber)).toString();
-            },
+            }
           })
         },
         onToUnitClicked: () => {
@@ -116,7 +116,7 @@ export struct CalculatorComponent {
               }
               this.toUnit = newUnit;
               this.toNumber = this.convertUnit(Number(this.fromNumber)).toString();
-            },
+            }
           })
         }
       })

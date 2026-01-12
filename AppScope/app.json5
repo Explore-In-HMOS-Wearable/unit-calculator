@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.hmosdemos.unitcalculator",
+    "bundleName": "com.hmosdemos.wearable.unit_calculator",
     "vendor": "hmosdemos",
     "versionCode": 1000000,
     "versionName": "1.0.0",

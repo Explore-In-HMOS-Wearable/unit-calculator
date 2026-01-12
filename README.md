@@ -15,8 +15,10 @@ various measurement categories. Whether you're handling metric or imperial syste
 </div>
 
 # Use Cases
-This application is ideal for converting various units such as length, weight, speed, and pressure. 
+
+This application is ideal for converting various units such as length, weight, speed, and pressure.
 The values and units that can be converted within the scope of the application are as follows:
+
 - Length: `mm`, `cm`, `m`, `km`, `in`, `ft`, `yd`, `mi`
 - Weight: `mg`, `g`, `kg`, `t`, `oz`, `lb`, `st`
 - Temperature: `°C`, `°F`, `K`
@@ -30,11 +32,13 @@ The values and units that can be converted within the scope of the application a
 - Angle: `°`, `rad`, `gon`
 
 # Tech Stack
+
 - Languages: ArkTS
 - Frameworks: HarmonyOS SDK 5.0.0(12)
 - Tools: DevEco Studio Vers 5.1.0.823
 
 # Directory Structure
+
 ```
 entry/src/main/ets/
 |---components
@@ -59,7 +63,15 @@ entry/src/main/ets/
 # Constraints and Restrictions
 
 ## Supported Device
+
 - Huawei Watch 5
 
+## Preparations Before Run
+
+- To run this app, download DevEco Studio version v5.1.0.823
+- Download the project and open it with DevEco.
+- Connect a wearable device that runs with HarmonyOs Next and Run it.
+
 # License
+
 Unit Calculator Application is distributed under the terms of the MIT License. See the [LICENSE](./LICENSE) for more information
