@@ -9,7 +9,9 @@ export struct CalcButton {
       Text(this.text)
         .fontColor(Color.Black)
         .textAlign(TextAlign.Center)
-        .fontSize('18fp')
+        .maxFontSize('13fp')
+        .minFontSize('8fp')
+        .maxLines(1)
     }
     .onClick(() => {
       if (this.onBtnClick) {
@@ -20,8 +22,8 @@ export struct CalcButton {
     .focusable(true)
     .focusOnTouch(true)
     .width('100%')
-    .height('36vp')
-    .borderRadius('18vp')
+    .height('26vp')
+    .borderRadius('13vp')
     .backgroundColor(this.color ?? '#ffa4cba1')
   }
 }

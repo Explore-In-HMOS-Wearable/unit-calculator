@@ -11,6 +11,10 @@ import {
   TemperatureUnit,
   VolumeUnit,
   AreaUnit,
+  StorageUnit,
+  DataRateUnit,
+  FrequencyUnit,
+  FuelUnit,
   LENGTH_UNITS,
   WEIGHT_UNITS,
   TEMPERATURE_UNITS,
@@ -21,21 +25,29 @@ import {
   PRESSURE_UNITS,
   ENERGY_UNITS,
   POWER_UNITS,
-  ANGLE_UNITS
+  ANGLE_UNITS,
+  STORAGE_UNITS,
+  DATA_RATE_UNITS,
+  FREQUENCY_UNITS,
+  FUEL_UNITS
 } from './UnitEnums';
 
 export type AnyUnit =
   | LengthUnit
-    | WeightUnit
-    | TemperatureUnit
-    | VolumeUnit
-    | AreaUnit
-    | SpeedUnit
-    | TimeUnit
-    | PressureUnit
-    | EnergyUnit
-    | PowerUnit
-    | AngleUnit;
+  | WeightUnit
+  | TemperatureUnit
+  | VolumeUnit
+  | AreaUnit
+  | SpeedUnit
+  | TimeUnit
+  | PressureUnit
+  | EnergyUnit
+  | PowerUnit
+  | AngleUnit
+  | StorageUnit
+  | DataRateUnit
+  | FrequencyUnit
+  | FuelUnit;
 
 interface UnitConverter {
   category: string,
@@ -109,5 +121,29 @@ export const converters: UnitConverter[] = [
     units: ANGLE_UNITS,
     fn: (value, from, to) =>
     UnitConversion.convertAngle(value, from as AngleUnit, to as AngleUnit)
+  },
+  {
+    category: 'Storage',
+    units: STORAGE_UNITS,
+    fn: (value, from, to) =>
+    UnitConversion.convertStorage(value, from as StorageUnit, to as StorageUnit)
+  },
+  {
+    category: 'Data Rate',
+    units: DATA_RATE_UNITS,
+    fn: (value, from, to) =>
+    UnitConversion.convertDataRate(value, from as DataRateUnit, to as DataRateUnit)
+  },
+  {
+    category: 'Frequency',
+    units: FREQUENCY_UNITS,
+    fn: (value, from, to) =>
+    UnitConversion.convertFrequency(value, from as FrequencyUnit, to as FrequencyUnit)
+  },
+  {
+    category: 'Fuel',
+    units: FUEL_UNITS,
+    fn: (value, from, to) =>
+    UnitConversion.convertFuel(value, from as FuelUnit, to as FuelUnit)
   }
 ];

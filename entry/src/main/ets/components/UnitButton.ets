@@ -9,7 +9,7 @@ export struct UnitButton {
   build() {
     Button() {
       Text(this.unit)
-        .fontSize('18fp')
+        .fontSize('13fp')
         .fontColor(Color.Black)
         .textAlign(TextAlign.Center)
     }
@@ -17,9 +17,9 @@ export struct UnitButton {
     .clickEffect({ level: ClickEffectLevel.HEAVY, scale: 0.9 })
     .focusable(true)
     .focusOnTouch(true)
-    .width('60vp')
-    .height('26vp')
-    .borderRadius('16vp')
+    .width('100%')
+    .height('20vp')
+    .borderRadius('10vp')
     .backgroundColor('#ff8ab8ca')
   }
 }

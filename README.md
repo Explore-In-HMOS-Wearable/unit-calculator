@@ -1,5 +1,3 @@
-> **Note:** To access all shared projects, get information about environment setup, and view other guides, please visit [Explore-In-HMOS-Wearable Index](https://github.com/Explore-In-HMOS-Wearable/hmos-index).
-
 # Unit Calculator Application
 
 The Unit Converter app is a lightweight and intuitive tool designed for quick and accurate unit conversions across
@@ -8,10 +6,10 @@ various measurement categories. Whether you're handling metric or imperial syste
 # Preview
 
 <div>
-    <img src="./screenshots/group1.png" width="24%"/>
-    <img src="./screenshots/group2.png" width="24%"/>
-    <img src="./screenshots/group3.png" width="24%"/>
-    <img src="./screenshots/group4.png" width="24%"/>
+    <img src="./screenshots/1.png" width="24%"/>
+    <img src="./screenshots/2.png" width="24%"/>
+    <img src="./screenshots/3.png" width="24%"/>
+    <img src="./screenshots/4.png" width="24%"/>
 </div>
 
 # Use Cases

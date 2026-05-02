@@ -9,7 +9,11 @@ import {
   WeightUnit,
   TemperatureUnit,
   VolumeUnit,
-  AreaUnit
+  AreaUnit,
+  StorageUnit,
+  DataRateUnit,
+  FrequencyUnit,
+  FuelUnit
 } from './UnitEnums';
 
 export class UnitConversion {
@@ -314,5 +318,125 @@ export class UnitConversion {
     const degrees = value * toDegrees[from];
     const converted = degrees / toDegrees[to];
     return UnitConversion.roundTo(converted, decimalCount[to]);
+  }
+
+  // DIGITAL STORAGE
+  // Base unit: byte. Decimal prefixes (KB=1000), Binary prefixes (KiB=1024).
+  static convertStorage(value: number, from: StorageUnit, to: StorageUnit): number {
+    const toBytes: Record<StorageUnit, number> = {
+      [StorageUnit.BIT]:      0.125,
+      [StorageUnit.BYTE]:     1,
+      [StorageUnit.KILOBYTE]: 1e3,
+      [StorageUnit.MEGABYTE]: 1e6,
+      [StorageUnit.GIGABYTE]: 1e9,
+      [StorageUnit.TERABYTE]: 1e12,
+      [StorageUnit.PETABYTE]: 1e15,
+      [StorageUnit.KIBIBYTE]: 1024,
+      [StorageUnit.MEBIBYTE]: 1048576,
+      [StorageUnit.GIBIBYTE]: 1073741824,
+      [StorageUnit.TEBIBYTE]: 1099511627776
+    };
+
+    const decimalCount: Record<StorageUnit, number> = {
+      [StorageUnit.BIT]:      0,
+      [StorageUnit.BYTE]:     0,
+      [StorageUnit.KILOBYTE]: 2,
+      [StorageUnit.MEGABYTE]: 2,
+      [StorageUnit.GIGABYTE]: 3,
+      [StorageUnit.TERABYTE]: 3,
+      [StorageUnit.PETABYTE]: 3,
+      [StorageUnit.KIBIBYTE]: 2,
+      [StorageUnit.MEBIBYTE]: 2,
+      [StorageUnit.GIBIBYTE]: 3,
+      [StorageUnit.TEBIBYTE]: 3
+    };
+
+    const bytes = value * toBytes[from];
+    const converted = bytes / toBytes[to];
+    return UnitConversion.roundTo(converted, decimalCount[to]);
+  }
+
+  // DATA TRANSFER RATE
+  // Base unit: bps (bits per second). All SI decimal prefixes.
+  static convertDataRate(value: number, from: DataRateUnit, to: DataRateUnit): number {
+    const toBps: Record<DataRateUnit, number> = {
+      [DataRateUnit.BPS]:  1,
+      [DataRateUnit.KBPS]: 1e3,
+      [DataRateUnit.MBPS]: 1e6,
+      [DataRateUnit.GBPS]: 1e9,
+      [DataRateUnit.TBPS]: 1e12
+    };
+
+    const decimalCount: Record<DataRateUnit, number> = {
+      [DataRateUnit.BPS]:  0,
+      [DataRateUnit.KBPS]: 2,
+      [DataRateUnit.MBPS]: 2,
+      [DataRateUnit.GBPS]: 3,
+      [DataRateUnit.TBPS]: 3
+    };
+
+    const bps = value * toBps[from];
+    const converted = bps / toBps[to];
+    return UnitConversion.roundTo(converted, decimalCount[to]);
+  }
+
+  // FREQUENCY
+  // Base unit: Hz.
+  static convertFrequency(value: number, from: FrequencyUnit, to: FrequencyUnit): number {
+    const toHz: Record<FrequencyUnit, number> = {
+      [FrequencyUnit.MILLIHERTZ]: 0.001,
+      [FrequencyUnit.HERTZ]:      1,
+      [FrequencyUnit.KILOHERTZ]:  1e3,
+      [FrequencyUnit.MEGAHERTZ]:  1e6,
+      [FrequencyUnit.GIGAHERTZ]:  1e9,
+      [FrequencyUnit.TERAHERTZ]:  1e12
+    };
+
+    const decimalCount: Record<FrequencyUnit, number> = {
+      [FrequencyUnit.MILLIHERTZ]: 1,
+      [FrequencyUnit.HERTZ]:      2,
+      [FrequencyUnit.KILOHERTZ]:  3,
+      [FrequencyUnit.MEGAHERTZ]:  4,
+      [FrequencyUnit.GIGAHERTZ]:  4,
+      [FrequencyUnit.TERAHERTZ]:  6
+    };
+
+    const hz = value * toHz[from];
+    const converted = hz / toHz[to];
+    return UnitConversion.roundTo(converted, decimalCount[to]);
+  }
+
+  // FUEL ECONOMY
+  // mpg and km/L are inversely related to L/100km — needs special (non-linear) handling.
+  static convertFuel(value: number, from: FuelUnit, to: FuelUnit): number {
+    if (from === to || value === 0) {
+      return value;
+    }
+
+    // Step 1: convert to L/100km
+    let l100: number;
+    if (from === FuelUnit.L_PER_100KM) {
+      l100 = value;
+    } else if (from === FuelUnit.KM_PER_L) {
+      l100 = 100 / value;
+    } else if (from === FuelUnit.MPG_US) {
+      l100 = 235.215 / value;
+    } else {
+      l100 = 282.481 / value; // MPG_UK
+    }
+
+    // Step 2: convert from L/100km to target
+    let result: number;
+    if (to === FuelUnit.L_PER_100KM) {
+      result = l100;
+    } else if (to === FuelUnit.KM_PER_L) {
+      result = 100 / l100;
+    } else if (to === FuelUnit.MPG_US) {
+      result = 235.215 / l100;
+    } else {
+      result = 282.481 / l100; // MPG_UK
+    }
+
+    return UnitConversion.roundTo(result, 2);
   }
 }

@@ -214,3 +214,83 @@ export const ANGLE_UNITS: AngleUnit[] = [
   AngleUnit.RADIAN,
   AngleUnit.GRADIAN
 ];
+
+// ─────────────────────────────────────────
+// NEW CATEGORIES
+// ─────────────────────────────────────────
+
+export enum StorageUnit {
+  BIT      = 'bit',
+  BYTE     = 'B',
+  KILOBYTE = 'KB',
+  MEGABYTE = 'MB',
+  GIGABYTE = 'GB',
+  TERABYTE = 'TB',
+  PETABYTE = 'PB',
+  KIBIBYTE = 'KiB',
+  MEBIBYTE = 'MiB',
+  GIBIBYTE = 'GiB',
+  TEBIBYTE = 'TiB'
+}
+
+export enum DataRateUnit {
+  BPS  = 'bps',
+  KBPS = 'Kbps',
+  MBPS = 'Mbps',
+  GBPS = 'Gbps',
+  TBPS = 'Tbps'
+}
+
+export enum FrequencyUnit {
+  MILLIHERTZ = 'mHz',
+  HERTZ      = 'Hz',
+  KILOHERTZ  = 'kHz',
+  MEGAHERTZ  = 'MHz',
+  GIGAHERTZ  = 'GHz',
+  TERAHERTZ  = 'THz'
+}
+
+export enum FuelUnit {
+  L_PER_100KM = 'L/100km',
+  KM_PER_L    = 'km/L',
+  MPG_US      = 'mpg',
+  MPG_UK      = 'mpg UK'
+}
+
+export const STORAGE_UNITS: StorageUnit[] = [
+  StorageUnit.BIT,
+  StorageUnit.BYTE,
+  StorageUnit.KILOBYTE,
+  StorageUnit.MEGABYTE,
+  StorageUnit.GIGABYTE,
+  StorageUnit.TERABYTE,
+  StorageUnit.PETABYTE,
+  StorageUnit.KIBIBYTE,
+  StorageUnit.MEBIBYTE,
+  StorageUnit.GIBIBYTE,
+  StorageUnit.TEBIBYTE
+];
+
+export const DATA_RATE_UNITS: DataRateUnit[] = [
+  DataRateUnit.BPS,
+  DataRateUnit.KBPS,
+  DataRateUnit.MBPS,
+  DataRateUnit.GBPS,
+  DataRateUnit.TBPS
+];
+
+export const FREQUENCY_UNITS: FrequencyUnit[] = [
+  FrequencyUnit.MILLIHERTZ,
+  FrequencyUnit.HERTZ,
+  FrequencyUnit.KILOHERTZ,
+  FrequencyUnit.MEGAHERTZ,
+  FrequencyUnit.GIGAHERTZ,
+  FrequencyUnit.TERAHERTZ
+];
+
+export const FUEL_UNITS: FuelUnit[] = [
+  FuelUnit.L_PER_100KM,
+  FuelUnit.KM_PER_L,
+  FuelUnit.MPG_US,
+  FuelUnit.MPG_UK
+];
